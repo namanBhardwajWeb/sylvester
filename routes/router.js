@@ -137,9 +137,9 @@ router.post('/getUserDetails',ifLogin,function(req,res){
 });
 
 router.post('/updateProfile',ifLogin,function(req,res){
-	 if(req.body.id){
-		 var id =  req.body.id;
-		 	delete req.body.id;
+	 if(req.body.userId){
+		 var id =  req.body.userId;
+		 	delete req.body.userId;
 			dbSchemas.usersCompleteProfile.findOneAndUpdate({userId : id},req.body,function(err,profile){
 					if(err) res.json({ success : false , msg : err });
 					if(!profile)res.json({ success : true , msg : 'No Such User Found' });
